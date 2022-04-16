@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firebase.LoginActivity"
+    android:background="@color/navy_blue">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_login"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_computer_login_bro"/>
+
+        <TextView
+            android:id="@+id/tv_login_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_login"
+            android:text="Proceed With Your"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:id="@+id/tv_login_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_login_1"
+            android:text="Sign In"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:layout_constraintTop_toBottomOf="@id/tv_login_2"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:id="@+id/et_login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
+            android:hint="Email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:layout_constraintTop_toBottomOf="@id/et_login_email"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:id="@+id/et_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:startIconDrawable="@drawable/ic_baseline_key_24"
+            android:hint="Password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_login_password"
+            android:text="Forget Password ?"
+            android:textColor="@color/white"
+            android:layout_margin="16sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_login_password"
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="50dp"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:text="Sign In"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/orange"
+            app:cornerRadius="16dp"/>
+
+        <TextView
+            android:id="@+id/tv_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_login"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="16sp"
+            android:text="Don't have an account? Sign Up"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
