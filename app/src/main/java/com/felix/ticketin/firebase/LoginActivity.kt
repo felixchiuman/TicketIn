@@ -6,13 +6,9 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
-import com.felix.ticketin.R
 import com.felix.ticketin.databinding.ActivityLoginBinding
 import com.felix.ticketin.ui.MainActivity
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
