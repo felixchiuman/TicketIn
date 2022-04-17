@@ -2,7 +2,6 @@ package com.felix.ticketin.api
 
 import com.felix.ticketin.model.comingsoon.GetAllComingSoonResponse
 import com.felix.ticketin.model.playingnow.GetAllPlayingNowIResponse
-import com.felix.ticketin.model.playingnow.Result
 import retrofit2.Call
 import retrofit2.http.GET
 
