@@ -1,13 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.MovieDetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.MovieDetailFragment"
+    android:background="@color/navy_blue">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <VideoView
+            android:id="@+id/vv_trailer"
+            android:layout_width="match_parent"
+            android:layout_height="192dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_poster"
+            android:layout_width="128dp"
+            android:layout_height="140dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vv_trailer"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_baseline_local_movies_24"/>
+
+        <TextView
+            android:id="@+id/tv_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/iv_poster"
+            app:layout_constraintTop_toTopOf="@id/iv_poster"
+            app:layout_constraintBottom_toBottomOf="@id/iv_poster"
+            android:text="Title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_margin="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_desc_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_poster"
+            app:layout_constraintEnd_toEndOf="@id/vv_trailer"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in eros eget libero sagittis lacinia. Morbi imperdiet, tellus et lacinia viverra, justo enim dictum ex, id vulputate arcu odio volutpat nunc. Pellentesque eu egestas dolor. Cras dapibus sapien quam, eu viverra nibh dignissim a. Proin nunc lectus, ornare bibendum dolor ac, auctor finibus lectus. Nullam aliquam quam non velit hendrerit venenatis. Cras at purus sit amet augue mattis elementum eu in nunc."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_margin="16sp"
+            android:paddingStart="16sp"
+            android:paddingEnd="16sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc_detail"
+            android:id="@+id/btn_buy"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:text="Buy Now"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/orange"
+            app:cornerRadius="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
