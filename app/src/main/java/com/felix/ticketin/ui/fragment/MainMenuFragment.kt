@@ -119,6 +119,11 @@ class MainMenuFragment : Fragment() {
         binding.rvComingsoon.adapter = adapter
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 //    private fun checkUser() {
 //        val firebaseUser = firebaseAuth.currentUser
 //        if (firebaseUser != null){
