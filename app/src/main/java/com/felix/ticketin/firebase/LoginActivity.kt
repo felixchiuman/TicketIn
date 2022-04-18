@@ -1,11 +1,15 @@
 package com.felix.ticketin.firebase
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.navigation.findNavController
+import com.felix.ticketin.R
 import com.felix.ticketin.databinding.ActivityLoginBinding
 import com.felix.ticketin.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -36,6 +40,10 @@ class LoginActivity : AppCompatActivity() {
         binding.tvForget.setOnClickListener {
             resetPassword()
         }
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this, "Back Button Disable", Toast.LENGTH_SHORT).show()
     }
 
     private fun resetPassword() {
