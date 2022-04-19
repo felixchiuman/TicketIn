@@ -7,9 +7,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.navigation.findNavController
-import com.felix.ticketin.R
 import com.felix.ticketin.databinding.ActivityLoginBinding
 import com.felix.ticketin.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -42,8 +39,21 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    var backPressed = false
     override fun onBackPressed() {
-        Toast.makeText(this, "Back Button Disable", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Back button disabled", Toast.LENGTH_SHORT).show()
+//        if (backPressed) {
+//            exitProcess(0)
+//        } else {
+//            Toast.makeText(this,
+//                "\"Click one more time to exit",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//            backPressed = true
+//            Handler().postDelayed({
+//                backPressed = false
+//            }, 2000)
+//        }
     }
 
     private fun resetPassword() {
