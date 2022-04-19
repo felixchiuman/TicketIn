@@ -1,6 +1,7 @@
 package com.felix.ticketin.ui.fragment
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,11 +21,11 @@ class MovieDetailViewModel : ViewModel() {
                 call: Call<GetAllMovieDetailResponse>,
                 response: Response<GetAllMovieDetailResponse>) {
 
-                if (response.code() == 200 || response.code() == 201){
-                    Log.d("detil", response.body()?.backdropPath.toString())
-                    Log.d("detil2", response.body()?.posterPath.toString())
-                    Log.d("detil3", response.body()?.overview.toString())
+                Log.d("detil", response.code().toString())
+
+                if (response.isSuccessful){
                     _detailMovie.postValue(response.body())
+                }else{
                 }
             }
 

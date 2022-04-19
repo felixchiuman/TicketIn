@@ -14,6 +14,6 @@ interface ApiService {
     @GET("movie/upcoming?api_key=1ff43c35d49d9fd669947e7043b603fc")
     fun getAllComingSoon(): Call<GetAllComingSoonResponse>
 
-    @GET("movie/{movie_id}")
+    @GET("movie/{movie_id}?api_key=1ff43c35d49d9fd669947e7043b603fc")
     fun getMovieDetail(@Path("movie_id")movieid:Int): Call<GetAllMovieDetailResponse>
 }
