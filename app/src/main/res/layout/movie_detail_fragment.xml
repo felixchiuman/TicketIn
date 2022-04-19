@@ -11,20 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <VideoView
-            android:id="@+id/vv_trailer"
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_48"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp" />
+
+        <ImageView
+            android:id="@+id/iv_backdrop"
             android:layout_width="match_parent"
             android:layout_height="192dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_local_movies_24"/>
 
         <ImageView
             android:id="@+id/iv_poster"
             android:layout_width="128dp"
             android:layout_height="140dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vv_trailer"
+            app:layout_constraintTop_toBottomOf="@id/iv_backdrop"
             android:layout_margin="16dp"
             android:src="@drawable/ic_baseline_local_movies_24"/>
 
@@ -47,7 +57,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_poster"
-            app:layout_constraintEnd_toEndOf="@id/vv_trailer"
+            app:layout_constraintEnd_toEndOf="@id/iv_backdrop"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in eros eget libero sagittis lacinia. Morbi imperdiet, tellus et lacinia viverra, justo enim dictum ex, id vulputate arcu odio volutpat nunc. Pellentesque eu egestas dolor. Cras dapibus sapien quam, eu viverra nibh dignissim a. Proin nunc lectus, ornare bibendum dolor ac, auctor finibus lectus. Nullam aliquam quam non velit hendrerit venenatis. Cras at purus sit amet augue mattis elementum eu in nunc."
             android:textSize="16sp"
             android:textColor="@color/white"
@@ -59,13 +69,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_desc_detail"
+            app:layout_constraintTop_toBottomOf="@id/iv_poster"
             android:id="@+id/btn_buy"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="128dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="196dp"
             android:paddingStart="40dp"
             android:paddingEnd="40dp"
             android:text="Buy Now"
@@ -74,6 +84,14 @@
             android:textStyle="bold"
             android:backgroundTint="@color/orange"
             app:cornerRadius="16dp"/>
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintTop_toBottomOf="@id/btn_buy"
+             app:layout_constraintBottom_toBottomOf="parent"
+             android:layout_marginBottom="64dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

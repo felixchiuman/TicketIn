@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.felix.ticketin.R
 import com.felix.ticketin.adapter.ComingSoonAdapter
 import com.felix.ticketin.adapter.PlayingNowAdapter
 import com.felix.ticketin.api.ApiClient
@@ -14,7 +16,6 @@ import com.felix.ticketin.model.comingsoon.GetAllComingSoonResponse
 import com.felix.ticketin.model.comingsoon.ResultComingSoon
 import com.felix.ticketin.model.playingnow.GetAllPlayingNowIResponse
 import com.felix.ticketin.model.playingnow.Result
-import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +25,9 @@ class MainMenuFragment : Fragment() {
     private var _binding: MainMenuFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainMenuViewModel
+    companion object{
+        val MOVIE_ID = "MOVIE_ID"
+    }
 
 
     override fun onCreateView(
@@ -33,11 +37,6 @@ class MainMenuFragment : Fragment() {
         _binding = MainMenuFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,6 +80,10 @@ class MainMenuFragment : Fragment() {
         val adapter = PlayingNowAdapter(object : PlayingNowAdapter.OnClickListener{
             override fun onClickItem(data: Result) {
                 val id = data.id
+                val actionToDetailFragment = MainMenuFragmentDirections.actionNavigationHomeToMovieDetailFragment()
+                actionToDetailFragment.movieId = id.toString().toInt()
+//                Bundle().putString(MOVIE_ID, id.toString())
+                findNavController().navigate(actionToDetailFragment)
             }
         })
         adapter.submitData(data)
@@ -113,6 +116,10 @@ class MainMenuFragment : Fragment() {
         val adapter = ComingSoonAdapter(object : ComingSoonAdapter.OnClickListener{
             override fun onClickItem(data: ResultComingSoon) {
                 val id = data.id
+                val actionToDetailFragment = MainMenuFragmentDirections.actionNavigationHomeToMovieDetailFragment()
+                actionToDetailFragment.movieId = id.toString().toInt()
+//                Bundle().putString(MOVIE_ID, id.toString())
+                findNavController().navigate(actionToDetailFragment)
             }
         })
         adapter.submitData(data)

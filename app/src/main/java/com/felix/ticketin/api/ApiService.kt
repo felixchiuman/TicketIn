@@ -15,5 +15,5 @@ interface ApiService {
     fun getAllComingSoon(): Call<GetAllComingSoonResponse>
 
     @GET("movie/{movie_id}")
-    fun getMovieDetail(@Path("movie_id")movieid:Int): GetAllMovieDetailResponse
+    fun getMovieDetail(@Path("movie_id")movieid:Int): Call<GetAllMovieDetailResponse>
 }

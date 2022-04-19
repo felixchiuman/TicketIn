@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.felix.ticketin.ui.fragment.MainMenuFragment"
         android:label="main_menu_fragment"
-        tools:layout="@layout/main_menu_fragment" />
+        tools:layout="@layout/main_menu_fragment" >
+        <action
+            android:id="@+id/action_navigation_home_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_comingsoon"
         android:name="com.felix.ticketin.ui.fragment.ComingSoonFragment"
@@ -19,7 +23,15 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.felix.ticketin.ui.fragment.MovieDetailFragment"
         android:label="movie_detail_fragment"
-        tools:layout="@layout/movie_detail_fragment" />
+        tools:layout="@layout/movie_detail_fragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
     <activity
         android:id="@+id/login_Activity"
         android:name="com.felix.ticketin.firebase.LoginActivity"
