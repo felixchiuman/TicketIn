@@ -1,4 +1,4 @@
-package com.felix.ticketin.onboarding
+package com.felix.ticketin.ui.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.felix.ticketin.R
-import com.felix.ticketin.firebase.LoginActivity
+import com.felix.ticketin.ui.firebase.LoginActivity
 import com.felix.ticketin.model.OnBoardingData
 import com.google.android.material.tabs.TabLayout
 

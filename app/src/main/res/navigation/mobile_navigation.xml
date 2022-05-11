@@ -34,7 +34,28 @@
     </fragment>
     <activity
         android:id="@+id/login_Activity"
-        android:name="com.felix.ticketin.firebase.LoginActivity"
+        android:name="com.felix.ticketin.ui.firebase.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/setting"
+        android:name="com.felix.ticketin.ui.fragment.Setting"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_setting_to_login_Activity"
+            app:destination="@id/login_Activity" />
+        <action
+            android:id="@+id/action_setting_to_securityFragment"
+            app:destination="@id/securityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/securityFragment"
+        android:name="com.felix.ticketin.ui.fragment.SecurityFragment"
+        android:label="fragment_security"
+        tools:layout="@layout/fragment_security" >
+        <action
+            android:id="@+id/action_securityFragment_to_setting"
+            app:destination="@id/setting" />
+    </fragment>
 </navigation>

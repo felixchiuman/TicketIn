@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.felix.ticketin.firebase.LoginActivity
-import com.felix.ticketin.onboarding.OnBoardingActivity
+import com.felix.ticketin.ui.firebase.LoginActivity
+import com.felix.ticketin.ui.onboarding.OnBoardingActivity
 
 class SplashScreen : AppCompatActivity() {
 

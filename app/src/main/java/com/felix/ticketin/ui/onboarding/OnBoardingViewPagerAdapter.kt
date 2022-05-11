@@ -1,4 +1,4 @@
-package com.felix.ticketin.onboarding
+package com.felix.ticketin.ui.onboarding
 
 import android.content.Context
 import android.view.LayoutInflater

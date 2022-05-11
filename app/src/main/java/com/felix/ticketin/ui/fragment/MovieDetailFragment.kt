@@ -51,4 +51,8 @@ class MovieDetailFragment : Fragment() {
             findNavController().navigate(R.id.action_movieDetailFragment_to_navigation_home)
         }
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

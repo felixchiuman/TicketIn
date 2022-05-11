@@ -1,11 +1,10 @@
 package com.felix.ticketin.ui.fragment
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.felix.ticketin.api.ApiClient
+import com.felix.ticketin.service.ApiClient
 import com.felix.ticketin.model.moviedetail.GetAllMovieDetailResponse
 import retrofit2.Call
 import retrofit2.Callback

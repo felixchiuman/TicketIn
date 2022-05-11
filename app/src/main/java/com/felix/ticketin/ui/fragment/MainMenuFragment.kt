@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.felix.ticketin.R
 import com.felix.ticketin.adapter.ComingSoonAdapter
 import com.felix.ticketin.adapter.PlayingNowAdapter
-import com.felix.ticketin.api.ApiClient
+import com.felix.ticketin.service.ApiClient
 import com.felix.ticketin.databinding.MainMenuFragmentBinding
 import com.felix.ticketin.model.comingsoon.GetAllComingSoonResponse
 import com.felix.ticketin.model.comingsoon.ResultComingSoon
@@ -25,9 +24,6 @@ class MainMenuFragment : Fragment() {
     private var _binding: MainMenuFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainMenuViewModel
-    companion object{
-        val MOVIE_ID = "MOVIE_ID"
-    }
 
 
     override fun onCreateView(

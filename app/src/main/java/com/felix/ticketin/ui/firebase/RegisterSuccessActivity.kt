@@ -1,9 +1,8 @@
-package com.felix.ticketin.firebase
+package com.felix.ticketin.ui.firebase
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.felix.ticketin.R
 import com.felix.ticketin.databinding.ActivityRegisterSuccessBinding
 
 class RegisterSuccessActivity : AppCompatActivity() {

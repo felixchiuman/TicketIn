@@ -1,29 +1,12 @@
 package com.felix.ticketin.ui
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.navigation.ActivityNavigator
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.felix.ticketin.R
 import com.felix.ticketin.databinding.ActivityMainBinding
-import com.felix.ticketin.firebase.LoginActivity
-import com.felix.ticketin.model.playingnow.Result
-import com.felix.ticketin.ui.fragment.ComingSoonFragment
-import com.felix.ticketin.ui.fragment.MainMenuFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.internal.ContextUtils.getActivity
-import com.google.firebase.auth.FirebaseAuth
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding

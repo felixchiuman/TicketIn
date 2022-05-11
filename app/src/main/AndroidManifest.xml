@@ -19,16 +19,16 @@
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".firebase.RegisterSuccessActivity"
+            android:name="com.felix.ticketin.ui.firebase.RegisterSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".firebase.RegisterActivity"
+            android:name="com.felix.ticketin.ui.firebase.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".firebase.LoginActivity"
+            android:name="com.felix.ticketin.ui.firebase.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".onboarding.OnBoardingActivity"
+            android:name="com.felix.ticketin.ui.onboarding.OnBoardingActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

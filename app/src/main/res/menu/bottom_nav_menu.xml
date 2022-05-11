@@ -6,7 +6,7 @@
     <item android:id="@+id/navigation_comingsoon"
         android:title="Ticket"
         android:icon="@drawable/ic_baseline_local_movies_24"/>
-    <item android:id="@+id/login_Activity"
-        android:title="Sign Out"
-        android:icon="@drawable/ic_baseline_logout_24"/>
+    <item android:id="@+id/setting"
+        android:title="Setting"
+        android:icon="@drawable/ic_baseline_settings_24"/>
 </menu>

@@ -1,4 +1,4 @@
-package com.felix.ticketin.api
+package com.felix.ticketin.service
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

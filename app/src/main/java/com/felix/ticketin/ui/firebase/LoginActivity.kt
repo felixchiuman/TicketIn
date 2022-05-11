@@ -1,6 +1,5 @@
-package com.felix.ticketin.firebase
+package com.felix.ticketin.ui.firebase
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         //init firebase
         firebaseAuth = FirebaseAuth.getInstance()
-//        checkUser()
+        checkUser()
 
         binding.btnLogin.setOnClickListener {
             //sebelum login di validasi dlu datanya
@@ -39,9 +38,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    var backPressed = false
     override fun onBackPressed() {
-        Toast.makeText(this, "Back button disabled", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Back button disabled", Toast.LENGTH_SHORT)
 //        if (backPressed) {
 //            exitProcess(0)
 //        } else {
@@ -116,12 +114,12 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-//    private fun checkUser(){
-//        //if user telah login akan ke main activity
-//        val firebaseUser = firebaseAuth.currentUser
-//        if (firebaseUser != null){
-//            startActivity(Intent(this, MainActivity::class.java))
-//            finish()
-//        }
-//    }
+    private fun checkUser(){
+        //if user telah login akan ke main activity
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser != null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
 }

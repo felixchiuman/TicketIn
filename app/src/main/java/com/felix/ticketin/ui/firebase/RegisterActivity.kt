@@ -1,4 +1,4 @@
-package com.felix.ticketin.firebase
+package com.felix.ticketin.ui.firebase
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
-import com.felix.ticketin.R
 import com.felix.ticketin.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
