@@ -48,6 +48,12 @@
         <action
             android:id="@+id/action_setting_to_securityFragment"
             app:destination="@id/securityFragment" />
+        <action
+            android:id="@+id/action_setting_to_enterSecurityFragment"
+            app:destination="@id/enterSecurityFragment" />
+        <action
+            android:id="@+id/action_setting_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/securityFragment"
@@ -58,4 +64,18 @@
             android:id="@+id/action_securityFragment_to_setting"
             app:destination="@id/setting" />
     </fragment>
+    <fragment
+        android:id="@+id/enterSecurityFragment"
+        android:name="com.felix.ticketin.ui.fragment.EnterSecurityFragment"
+        android:label="fragment_enter_security"
+        tools:layout="@layout/fragment_enter_security" >
+        <action
+            android:id="@+id/action_enterSecurityFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.felix.ticketin.ui.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

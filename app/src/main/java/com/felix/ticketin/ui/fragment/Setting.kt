@@ -31,6 +31,10 @@ class Setting : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        binding.tvProfile.setOnClickListener {
+            it.findNavController().navigate(R.id.action_setting_to_enterSecurityFragment)
+        }
+
         binding.tvSecurity.setOnClickListener {
             it.findNavController().navigate(R.id.action_setting_to_securityFragment)
         }
