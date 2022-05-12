@@ -20,14 +20,13 @@ import java.io.ByteArrayOutputStream
 class ProfileFragment : Fragment() {
 
     companion object{
-        const val REQUEST_CAMERA = 100
+        const val REQ_CAM = 100
     }
-
-    private lateinit var imageUri : Uri
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var firebaseAuth : FirebaseAuth
+    private lateinit var imgUri : Uri
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,16 +47,16 @@ class ProfileFragment : Fragment() {
                 it.findNavController().navigate(R.id.action_profileFragment_to_navigation_home)
             }
             ivProfile.setOnClickListener {
-                intentCamera()
+                cameraIntent()
             }
         }
     }
 
-    private fun intentCamera() {
+    private fun cameraIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
             activity?.packageManager?.let {
-                intent.resolveActivity(it).also {
-                    startActivityForResult(intent, REQUEST_CAMERA)
+                intent?.resolveActivity(it).also {
+                    startActivityForResult(intent, REQ_CAM)
                 }
             }
         }
@@ -65,32 +64,30 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK){
+        if (requestCode == REQ_CAM && resultCode == RESULT_OK){
             val imgBitmap = data?.extras?.get("data") as Bitmap
-            uploadImage(imgBitmap)
+            uploadImg(imgBitmap)
         }
     }
 
-    private fun uploadImage(imgBitmap: Bitmap) {
+    private fun uploadImg(imgBitmap: Bitmap) {
         val baos = ByteArrayOutputStream()
-        val ref = FirebaseStorage.getInstance().reference.child("img/${FirebaseAuth.getInstance().currentUser?.uid}")
-
+        val ref = FirebaseStorage.getInstance().reference.child("img_user/${FirebaseAuth.getInstance().currentUser?.email}")
         imgBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val image = baos.toByteArray()
 
-        ref.putBytes(image)
+        val img = baos.toByteArray()
+        ref.putBytes(img)
             .addOnCompleteListener {
                 if (it.isSuccessful){
-                    ref.downloadUrl.addOnCompleteListener {
-                        it.result?.let {
-                            imageUri = it
+                    ref.downloadUrl.addOnCompleteListener { Task ->
+                        Task.result.let { Uri ->
+                            imgUri = Uri
                             binding.ivProfile.setImageBitmap(imgBitmap)
                         }
                     }
                 }
             }
-    }
-
+        }
     private fun loadProfile() {
         firebaseAuth = FirebaseAuth.getInstance()
         val firebaseUser = firebaseAuth.currentUser
