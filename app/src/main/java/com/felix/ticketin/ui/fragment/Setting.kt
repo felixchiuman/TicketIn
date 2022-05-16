@@ -5,9 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.felix.ticketin.DataStoreManager
 import com.felix.ticketin.R
 import com.felix.ticketin.databinding.FragmentSettingBinding
+import com.felix.ticketin.ui.MainViewModel
+import com.felix.ticketin.ui.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -15,6 +19,8 @@ class Setting : Fragment() {
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
     lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var viewModel: MainViewModel
+    private lateinit var pref: DataStoreManager
 
 
     override fun onCreateView(
@@ -28,6 +34,9 @@ class Setting : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        pref = DataStoreManager(requireContext())
+        viewModel = ViewModelProvider(this, ViewModelFactory(pref))[MainViewModel::class.java]
 
         firebaseAuth = FirebaseAuth.getInstance()
 
