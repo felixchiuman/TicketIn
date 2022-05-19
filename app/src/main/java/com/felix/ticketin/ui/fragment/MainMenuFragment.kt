@@ -53,7 +53,7 @@ class MainMenuFragment : Fragment() {
     }
 
     private fun fetchAllDataPlayingNow(){
-        ApiClient.instance.getAllPlayingNow()
+        ApiClient.getInstance(requireContext()).getAllPlayingNow()
             .enqueue(object : Callback<GetAllPlayingNowIResponse> {
                 override fun onResponse(
                     call: Call<GetAllPlayingNowIResponse>,
@@ -87,7 +87,7 @@ class MainMenuFragment : Fragment() {
     }
 
     private fun fetchAllDataComingSoon(){
-        ApiClient.instance.getAllComingSoon()
+        ApiClient.getInstance(requireContext()).getAllComingSoon()
             .enqueue(object : Callback<GetAllComingSoonResponse> {
                 override fun onResponse(
                     call: Call<GetAllComingSoonResponse>,

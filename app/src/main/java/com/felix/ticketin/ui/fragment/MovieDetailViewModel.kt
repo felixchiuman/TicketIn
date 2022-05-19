@@ -1,6 +1,8 @@
 package com.felix.ticketin.ui.fragment
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,12 +12,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieDetailViewModel : ViewModel() {
+class MovieDetailViewModel(application: Application) : AndroidViewModel(application) {
     private val _detailMovie: MutableLiveData<GetAllMovieDetailResponse> = MutableLiveData()
     val detailMovie: LiveData<GetAllMovieDetailResponse> = _detailMovie
 
     fun getDetailMovies(movieid: Int){
-        ApiClient.instance.getMovieDetail(movieid).enqueue(object : Callback<GetAllMovieDetailResponse> {
+        ApiClient.getInstance(getApplication()).getMovieDetail(movieid).enqueue(object : Callback<GetAllMovieDetailResponse> {
             override fun onResponse(
                 call: Call<GetAllMovieDetailResponse>,
                 response: Response<GetAllMovieDetailResponse>) {
