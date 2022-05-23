@@ -8,7 +8,7 @@ class Repository(private val dbHelper: DbHelper) {
 
     fun getAllFav() = dbHelper.getAllFav()
 
-    suspend fun getFavorite() =dbHelper.getFavorite()
+    suspend fun getFavorite(id: Int) =dbHelper.getFavorite(id)
 
     suspend fun insert(entity: FavEntity) = dbHelper.insert(entity)
 

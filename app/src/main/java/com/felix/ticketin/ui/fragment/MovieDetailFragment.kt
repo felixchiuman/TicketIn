@@ -34,14 +34,11 @@ class MovieDetailFragment : Fragment() {
         val movieId = args.movieId
         var name = "default name"
         var image = "default image"
-        var id = 123456
 
         viewModel.getDetailMovies(movieId)
-
-        viewModel.checkFavorite()
+        viewModel.checkFavorite(movieId)
 
         viewModel.detailMovie.observe(viewLifecycleOwner){data ->
-            id = data.id
             name = data.title
             image = data.posterPath
             Picasso.get().load(IMAGE_BASE+data.backdropPath).fit().into(binding.ivBackdrop)
@@ -55,14 +52,11 @@ class MovieDetailFragment : Fragment() {
                         binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
                     }
                 }
-//            else{
-//                binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
-//            }
             }
         }
 
         binding.ivFav.setOnClickListener {
-            addFavorite(id,name,image)
+            addFavorite(movieId,name,image)
         }
 
         binding.ivBack.setOnClickListener {
@@ -83,12 +77,12 @@ class MovieDetailFragment : Fragment() {
         }
             if (checkFav){
                 binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
-                viewModel.deleteFav(FavEntity(null, name, image))
+                viewModel.deleteFav(FavEntity(id, name, image))
             }else{
                 binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
-                viewModel.insertFavorite(FavEntity(null, name, image))
+                viewModel.insertFavorite(FavEntity(id, name, image))
             }
-            viewModel.checkFavorite()
+            viewModel.checkFavorite(id.toString().toInt())
     }
 
     override fun onDestroy() {

@@ -32,9 +32,9 @@ class MovieDetailViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun checkFavorite(){
+    fun checkFavorite(movieid: Int){
         viewModelScope.launch {
-            _dataFav.postValue(repository.getFavorite())
+            _dataFav.postValue(repository.getFavorite(movieid))
         }
     }
 
