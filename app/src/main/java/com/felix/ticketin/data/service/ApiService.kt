@@ -1,4 +1,4 @@
-package com.felix.ticketin.service
+package com.felix.ticketin.data.service
 
 import com.felix.ticketin.model.comingsoon.GetAllComingSoonResponse
 import com.felix.ticketin.model.moviedetail.GetAllMovieDetailResponse

@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.felix.ticketin.R
 import com.felix.ticketin.adapter.ComingSoonAdapter
 import com.felix.ticketin.adapter.PlayingNowAdapter
-import com.felix.ticketin.service.ApiClient
+import com.felix.ticketin.data.service.ApiClient
 import com.felix.ticketin.databinding.MainMenuFragmentBinding
 import com.felix.ticketin.model.comingsoon.GetAllComingSoonResponse
 import com.felix.ticketin.model.comingsoon.ResultComingSoon
@@ -47,6 +48,9 @@ class MainMenuFragment : Fragment() {
             viewModel.uncensored()
         }
 
+        binding.ivFav.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_home_to_favFragment)
+        }
         viewModel.email.observe(viewLifecycleOwner,{
             binding.tvUser.text = it
         })

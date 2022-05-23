@@ -20,6 +20,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <ImageView
+            android:id="@+id/iv_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_favorite_36"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp"/>
+
         <TextView
             android:id="@+id/tv_user"
             android:layout_width="wrap_content"
