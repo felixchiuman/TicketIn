@@ -51,6 +51,9 @@ class MovieDetailFragment : Fragment() {
                     if (it.id == data.id){
                         binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
                     }
+//                    else{
+//                        binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
+//                    }
                 }
             }
         }

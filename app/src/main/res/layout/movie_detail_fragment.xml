@@ -17,16 +17,15 @@
             android:layout_height="192dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_baseline_local_movies_24"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_back_36"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_arrow_back_36"
             android:layout_margin="16dp" />
 
         <ImageView
@@ -35,8 +34,7 @@
             android:layout_height="140dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_backdrop"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_baseline_local_movies_24"/>
+            android:layout_margin="16dp" />
 
         <TextView
             android:id="@+id/tv_detail_title"
@@ -46,7 +44,6 @@
             app:layout_constraintTop_toTopOf="@id/iv_poster"
             app:layout_constraintBottom_toBottomOf="@id/iv_poster"
             app:layout_constraintEnd_toEndOf="@id/iv_backdrop"
-            android:text="Title"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -59,7 +56,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_poster"
             app:layout_constraintEnd_toEndOf="@id/iv_backdrop"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in eros eget libero sagittis lacinia. Morbi imperdiet, tellus et lacinia viverra, justo enim dictum ex, id vulputate arcu odio volutpat nunc. Pellentesque eu egestas dolor. Cras dapibus sapien quam, eu viverra nibh dignissim a. Proin nunc lectus, ornare bibendum dolor ac, auctor finibus lectus. Nullam aliquam quam non velit hendrerit venenatis. Cras at purus sit amet augue mattis elementum eu in nunc."
+
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_margin="16sp"
