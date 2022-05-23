@@ -12,12 +12,12 @@ interface FavDao {
     @Query("SELECT * FROM fav_table")
     fun getAllFav(): List<FavEntity>
 
-    @Query("SELECT * FROM FAV_TABLE WHERE name= :name")
-    suspend fun getFavorite(name: String): FavEntity
+    @Query("SELECT * FROM FAV_TABLE")
+    suspend fun getFavorite(): FavEntity
 
     @Insert(onConflict = REPLACE)
     suspend fun insert(entity: FavEntity)
 
-    @Delete
-    suspend fun delete(entity: FavEntity): Int
+    @Query("DELETE FROM FAV_TABLE WHERE name= :name")
+    suspend fun deleteFavorite(name: String): Int
 }

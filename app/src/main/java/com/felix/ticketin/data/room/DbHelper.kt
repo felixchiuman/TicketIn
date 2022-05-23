@@ -5,9 +5,9 @@ import java.util.concurrent.Flow
 class DbHelper(private val favDao: FavDao) {
     fun getAllFav() = favDao.getAllFav()
 
-    suspend fun getFavorite(name: String) =favDao.getFavorite(name)
+    suspend fun getFavorite() =favDao.getFavorite()
 
     suspend fun insert(entity: FavEntity) = favDao.insert(entity)
 
-    suspend fun delete(entity: FavEntity) = favDao.delete(entity)
+    suspend fun deleteFavorite(name: String) = favDao.deleteFavorite(name)
 }

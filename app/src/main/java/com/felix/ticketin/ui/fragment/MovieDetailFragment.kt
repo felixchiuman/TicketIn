@@ -32,52 +32,63 @@ class MovieDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val movieId = args.movieId
-        var title = "default title"
         var name = "default name"
         var image = "default image"
 
-        viewModel.detailMovie.observe(viewLifecycleOwner){
-            title = it.title
-            Picasso.get().load(IMAGE_BASE+it.backdropPath).fit().into(binding.ivBackdrop)
-            Picasso.get().load(IMAGE_BASE+it.posterPath).fit().into(binding.ivPoster)
-            binding.tvDetailTitle.text = it.title
-            binding.tvDescDetail.text = it.overview
+        viewModel.getDetailMovies(movieId)
 
-            name = it.title
-            image = it.posterPath
-        }
-        var checkFav = false
-        viewModel.checkFavorite(name)
+        viewModel.checkFavorite()
 
-        viewModel.dataFav.observe(viewLifecycleOwner){
-            if (it != null){
-                if (it.name.contains(title)){
-                    binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
-                    checkFav = true
+        viewModel.detailMovie.observe(viewLifecycleOwner){data ->
+            name = data.title
+            image = data.posterPath
+            Picasso.get().load(IMAGE_BASE+data.backdropPath).fit().into(binding.ivBackdrop)
+            Picasso.get().load(IMAGE_BASE+data.posterPath).fit().into(binding.ivPoster)
+            binding.tvDetailTitle.text = data.title
+            binding.tvDescDetail.text = data.overview
+
+            viewModel.dataFav.observe(viewLifecycleOwner){
+                if (it != null){
+                    if (it.name == data.title){
+                        binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
+                    }
                 }
+//            else{
+//                binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
+//            }
             }
         }
 
         binding.ivFav.setOnClickListener {
-            if (checkFav){
-                viewModel.deleteFav(FavEntity(null, name,image))
-                binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
-            }else{
-                viewModel.insertFavorite(FavEntity(null, name, image))
-                binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
-            }
-            viewModel.checkFavorite(name)
+            addFavorite(name,image)
         }
-
-
-
-        viewModel.getDetailMovies(movieId)
 
         binding.ivBack.setOnClickListener {
             findNavController().navigate(R.id.action_movieDetailFragment_to_navigation_home)
         }
-
     }
+
+    private fun addFavorite(name: String, image: String) {
+        var checkFav = false
+
+        viewModel.dataFav.observe(viewLifecycleOwner){
+            if (it != null){
+                if (it.name.contains(name)){
+//                    binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
+                    checkFav = true
+                }
+            }
+        }
+            if (checkFav){
+                binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
+                viewModel.deleteFav(name)
+            }else{
+                binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
+                viewModel.insertFavorite(FavEntity(null, name, image))
+            }
+            viewModel.checkFavorite()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

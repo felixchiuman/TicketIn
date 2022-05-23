@@ -26,15 +26,15 @@ class MovieDetailViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun deleteFav(entity: FavEntity){
+    fun deleteFav(name: String){
         viewModelScope.launch {
-            repository.delete(entity)
+            repository.delete(name)
         }
     }
 
-    fun checkFavorite(name: String){
+    fun checkFavorite(){
         viewModelScope.launch {
-            _dataFav.postValue(repository.getFavorite(name))
+            _dataFav.postValue(repository.getFavorite())
         }
     }
 
@@ -48,7 +48,6 @@ class MovieDetailViewModel(private val repository: Repository) : ViewModel() {
 
                 if (response.isSuccessful){
                     _detailMovie.postValue(response.body())
-                }else{
                 }
             }
 
