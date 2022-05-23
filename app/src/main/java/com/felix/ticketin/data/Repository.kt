@@ -12,5 +12,5 @@ class Repository(private val dbHelper: DbHelper) {
 
     suspend fun insert(entity: FavEntity) = dbHelper.insert(entity)
 
-    suspend fun delete(name: String) = dbHelper.deleteFavorite(name)
+    suspend fun delete(entity: FavEntity) = dbHelper.deleteFavorite(entity)
 }

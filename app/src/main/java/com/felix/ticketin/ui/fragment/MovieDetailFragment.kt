@@ -34,12 +34,14 @@ class MovieDetailFragment : Fragment() {
         val movieId = args.movieId
         var name = "default name"
         var image = "default image"
+        var id = 123456
 
         viewModel.getDetailMovies(movieId)
 
         viewModel.checkFavorite()
 
         viewModel.detailMovie.observe(viewLifecycleOwner){data ->
+            id = data.id
             name = data.title
             image = data.posterPath
             Picasso.get().load(IMAGE_BASE+data.backdropPath).fit().into(binding.ivBackdrop)
@@ -49,7 +51,7 @@ class MovieDetailFragment : Fragment() {
 
             viewModel.dataFav.observe(viewLifecycleOwner){
                 if (it != null){
-                    if (it.name == data.title){
+                    if (it.id == data.id){
                         binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
                     }
                 }
@@ -60,7 +62,7 @@ class MovieDetailFragment : Fragment() {
         }
 
         binding.ivFav.setOnClickListener {
-            addFavorite(name,image)
+            addFavorite(id,name,image)
         }
 
         binding.ivBack.setOnClickListener {
@@ -68,12 +70,12 @@ class MovieDetailFragment : Fragment() {
         }
     }
 
-    private fun addFavorite(name: String, image: String) {
+    private fun addFavorite(id : Int?, name: String, image: String) {
         var checkFav = false
 
         viewModel.dataFav.observe(viewLifecycleOwner){
             if (it != null){
-                if (it.name.contains(name)){
+                if (it.id == id){
 //                    binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
                     checkFav = true
                 }
@@ -81,7 +83,7 @@ class MovieDetailFragment : Fragment() {
         }
             if (checkFav){
                 binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
-                viewModel.deleteFav(name)
+                viewModel.deleteFav(FavEntity(null, name, image))
             }else{
                 binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
                 viewModel.insertFavorite(FavEntity(null, name, image))

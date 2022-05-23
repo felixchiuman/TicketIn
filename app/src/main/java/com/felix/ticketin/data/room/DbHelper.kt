@@ -9,5 +9,5 @@ class DbHelper(private val favDao: FavDao) {
 
     suspend fun insert(entity: FavEntity) = favDao.insert(entity)
 
-    suspend fun deleteFavorite(name: String) = favDao.deleteFavorite(name)
+    suspend fun deleteFavorite(entity: FavEntity) = favDao.deleteFavorite(entity)
 }

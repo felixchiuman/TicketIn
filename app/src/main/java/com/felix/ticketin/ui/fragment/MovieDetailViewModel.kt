@@ -26,9 +26,9 @@ class MovieDetailViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun deleteFav(name: String){
+    fun deleteFav(entity: FavEntity){
         viewModelScope.launch {
-            repository.delete(name)
+            repository.delete(entity)
         }
     }
 
