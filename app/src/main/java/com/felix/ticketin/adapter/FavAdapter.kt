@@ -1,16 +1,12 @@
 package com.felix.ticketin.adapter
 
-import android.content.ContentValues
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.felix.ticketin.R
 import com.felix.ticketin.data.room.FavEntity
 import com.felix.ticketin.databinding.ItemContentBinding
-import com.felix.ticketin.model.playingnow.Result
 import com.squareup.picasso.Picasso
 
 

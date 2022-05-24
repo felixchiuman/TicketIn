@@ -1,6 +1,5 @@
 package com.felix.ticketin.ui.fragment
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,8 +12,8 @@ import com.felix.ticketin.adapter.ComingSoonAdapter
 import com.felix.ticketin.adapter.PlayingNowAdapter
 import com.felix.ticketin.data.Status
 import com.felix.ticketin.databinding.MainMenuFragmentBinding
-import com.felix.ticketin.model.comingsoon.ResultComingSoon
-import com.felix.ticketin.model.playingnow.Result
+import com.felix.ticketin.model.comingsoon.MovieComingSoon
+import com.felix.ticketin.model.playingnow.MoviePlaying
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainMenuFragment : Fragment() {
@@ -34,17 +33,9 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvUser.setOnClickListener {
-            viewModel.uncensored()
-        }
-
         binding.ivFav.setOnClickListener{
             findNavController().navigate(R.id.action_navigation_home_to_favFragment)
         }
-
-        viewModel.email.observe(viewLifecycleOwner,{
-            binding.tvUser.text = it
-        })
 
         viewModel.playingNow.observe(viewLifecycleOwner){ resource ->
             when (resource.status){
@@ -53,14 +44,14 @@ class MainMenuFragment : Fragment() {
                 }
                 Status.SUCCESS -> {
                     val adapter = PlayingNowAdapter(object : PlayingNowAdapter.OnClickListener{
-                        override fun onClickItem(data: Result) {
+                        override fun onClickItem(data: MoviePlaying) {
                             val id = data.id
                             val actionToDetailFragment = MainMenuFragmentDirections.actionNavigationHomeToMovieDetailFragment()
                             actionToDetailFragment.movieId = id.toString().toInt()
                             findNavController().navigate(actionToDetailFragment)
                         }
                     })
-                    adapter.submitData(resource.data)
+                    adapter.submitData(resource.data?.MoviePlaying)
                     binding.rvComingsoon.adapter = adapter
                     binding.progressBar.visibility = View.GONE
                 }
@@ -79,14 +70,14 @@ class MainMenuFragment : Fragment() {
                 }
                 Status.SUCCESS -> {
                     val adapter = ComingSoonAdapter(object : ComingSoonAdapter.OnClickListener{
-                        override fun onClickItem(data: ResultComingSoon) {
+                        override fun onClickItem(data: MovieComingSoon) {
                             val id = data.id
                             val actionToDetailFragment = MainMenuFragmentDirections.actionNavigationHomeToMovieDetailFragment()
                             actionToDetailFragment.movieId = id.toString().toInt()
                             findNavController().navigate(actionToDetailFragment)
                         }
                     })
-                    adapter.submitData(resource.data)
+                    adapter.submitData(resource.data?.MovieComingSoons)
                     binding.rvComingsoon.adapter = adapter
                     binding.progressBar.visibility = View.GONE
                 }
