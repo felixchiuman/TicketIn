@@ -1,13 +1,16 @@
 package com.felix.ticketin.ui.fragment
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.felix.ticketin.R
+import com.felix.ticketin.data.Status
 import com.felix.ticketin.data.room.FavEntity
 import com.felix.ticketin.databinding.MovieDetailFragmentBinding
 import com.squareup.picasso.Picasso
@@ -34,26 +37,45 @@ class MovieDetailFragment : Fragment() {
         val movieId = args.movieId
         var name = "default name"
         var image = "default image"
+        val progressDialog = ProgressDialog(requireContext())
 
-        viewModel.getDetailMovies(movieId)
+        viewModel.getAllDetailMovies(movieId)
         viewModel.checkFavorite(movieId)
 
-        viewModel.detailMovie.observe(viewLifecycleOwner){data ->
-            name = data.title
-            image = data.posterPath
-            Picasso.get().load(IMAGE_BASE+data.backdropPath).fit().into(binding.ivBackdrop)
-            Picasso.get().load(IMAGE_BASE+data.posterPath).fit().into(binding.ivPoster)
-            binding.tvDetailTitle.text = data.title
-            binding.tvDescDetail.text = data.overview
+        viewModel.detailMovie.observe(viewLifecycleOwner){resource ->
+            when (resource.status){
+                Status.LOADING -> {
+                    progressDialog.setMessage("Loading...")
+                    progressDialog.show()
+                }
+                Status.SUCCESS -> {
+                    name = resource.data?.title.toString()
+                    image = resource.data?.posterPath.toString()
+                    binding.tvDetailTitle.text = resource.data?.title
+                    binding.tvDescDetail.text = resource.data?.overview
+                    Picasso.get().load(IMAGE_BASE+resource.data?.backdropPath).fit().into(binding.ivBackdrop)
+                    Picasso.get().load(IMAGE_BASE+resource.data?.posterPath).fit().into(binding.ivPoster)
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "Error get Data : ${resource.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+//            name = data.title
+//            image = data.posterPath
+//            Picasso.get().load(IMAGE_BASE+data.backdropPath).fit().into(binding.ivBackdrop)
+//            Picasso.get().load(IMAGE_BASE+data.posterPath).fit().into(binding.ivPoster)
+//            binding.tvDetailTitle.text = data.title
+//            binding.tvDescDetail.text = data.overview
 
             viewModel.dataFav.observe(viewLifecycleOwner){
                 if (it != null){
-                    if (it.id == data.id){
+                    if (it.id == resource.data?.id){
                         binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_36)
                     }
-//                    else{
-//                        binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
-//                    }
+                    else{
+                        binding.ivFav.setImageResource(R.drawable.ic_baseline_favorite_border_36)
+                    }
                 }
             }
         }

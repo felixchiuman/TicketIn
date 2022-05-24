@@ -2,6 +2,7 @@ package com.felix.ticketin
 
 import android.app.Application
 import com.felix.ticketin.di.databaseModule
+import com.felix.ticketin.di.networkModule
 import com.felix.ticketin.di.repositoryModule
 import com.felix.ticketin.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -18,6 +19,7 @@ class MainApp : Application(){
             androidContext(this@MainApp)
             modules(
                 listOf(
+                    networkModule,
                     databaseModule,
                     repositoryModule,
                     viewModelModule,

@@ -1,23 +1,21 @@
 package com.felix.ticketin.ui.fragment
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.felix.ticketin.data.Repository
+import com.felix.ticketin.data.Resource
 import com.felix.ticketin.data.room.FavEntity
-import com.felix.ticketin.data.service.ApiClient
 import com.felix.ticketin.model.moviedetail.GetAllMovieDetailResponse
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import java.lang.Exception
+
 
 class MovieDetailViewModel(private val repository: Repository) : ViewModel() {
-    private val _detailMovie: MutableLiveData<GetAllMovieDetailResponse> = MutableLiveData()
+    private val _detailMovie = MutableLiveData<Resource<GetAllMovieDetailResponse>>()
     private val _dataFav = MutableLiveData<FavEntity>()
-    val detailMovie: LiveData<GetAllMovieDetailResponse> = _detailMovie
+    val detailMovie: LiveData<Resource<GetAllMovieDetailResponse>>get() = _detailMovie
     val dataFav: LiveData<FavEntity>get() = _dataFav
 
     fun insertFavorite(favEntity: FavEntity){
@@ -38,20 +36,14 @@ class MovieDetailViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun getDetailMovies(movieid: Int){
-        ApiClient.instance.getMovieDetail(movieid).enqueue(object : Callback<GetAllMovieDetailResponse> {
-            override fun onResponse(
-                call: Call<GetAllMovieDetailResponse>,
-                response: Response<GetAllMovieDetailResponse>) {
-
-                Log.d("detil", response.code().toString())
-
-                if (response.isSuccessful){
-                    _detailMovie.postValue(response.body())
-                }
+    fun getAllDetailMovies(movieid: Int){
+        viewModelScope.launch {
+            _detailMovie.postValue(Resource.loading())
+            try {
+                _detailMovie.postValue(Resource.success(repository.getDetailMovies(movieid)))
+            }catch (exception: Exception){
+                _detailMovie.postValue(Resource.error(exception.message ?: "Error Occured"))
             }
-
-            override fun onFailure(call: Call<GetAllMovieDetailResponse>, t: Throwable) {}
-        })
+        }
     }
 }
