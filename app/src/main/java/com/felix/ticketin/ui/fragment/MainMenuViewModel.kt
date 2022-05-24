@@ -14,10 +14,10 @@ import java.lang.Exception
 class MainMenuViewModel(private val repository: Repository) : ViewModel() {
     var email: MutableLiveData<String> = MutableLiveData("Hello, There")
 
-    private val _playingNow = MutableLiveData<Resource<List<GetAllPlayingNowIResponse>>>()
-    private val _comingSoon = MutableLiveData<Resource<List<GetAllComingSoonResponse>>>()
-    val playingNow: LiveData<Resource<List<GetAllPlayingNowIResponse>>> get() = _playingNow
-    val comingSoon: LiveData<Resource<List<GetAllComingSoonResponse>>> get() = _comingSoon
+    private val _playingNow = MutableLiveData<Resource<GetAllPlayingNowIResponse>>()
+    private val _comingSoon = MutableLiveData<Resource<GetAllComingSoonResponse>>()
+    val playingNow: LiveData<Resource<GetAllPlayingNowIResponse>> get() = _playingNow
+    val comingSoon: LiveData<Resource<GetAllComingSoonResponse>> get() = _comingSoon
 
     fun uncensored(){
         email.value  =  "Have a\nNice Day :D"

@@ -21,7 +21,6 @@ class MainMenuFragment : Fragment() {
     private var _binding: MainMenuFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainMenuViewModel by viewModel()
-    val progressDialog = ProgressDialog(requireContext())
 
 
     override fun onCreateView(
