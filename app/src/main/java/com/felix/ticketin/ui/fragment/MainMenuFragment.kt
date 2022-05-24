@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -54,14 +55,52 @@ class MainMenuFragment : Fragment() {
             binding.tvUser.text = it
         })
 
+        viewModel.plaingNow.observe(viewLifecycleOwner){resource ->
+            when (resource.status){
+                Status.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                Status.SUCCESS -> {
+                    val adapter = PlayingNowAdapter(object : PlayingNowAdapter.OnClickListener{
+                        override fun onClickItem(data: Result) {
+                            val id = data.id
+                            val actionToDetailFragment = MainMenuFragmentDirections.actionNavigationHomeToMovieDetailFragment()
+                            actionToDetailFragment.movieId = id.toString().toInt()
+                            findNavController().navigate(actionToDetailFragment)
+                        }
+                    })
+                    adapter.submitData(resource.data)
+                    binding.rvComingsoon.adapter = adapter
+                    binding.progressBar.visibility = View.GONE
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "Error get Data : ${resource.message}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
+
         viewModel.comingSoon.observe(viewLifecycleOwner){resource ->
             when (resource.status){
                 Status.LOADING -> {
-                    progressDialog.setMessage("Loading")
-                    progressDialog.show()
+                    binding.progressBar.visibility = View.VISIBLE
                 }
                 Status.SUCCESS -> {
-                    
+                    val adapter = ComingSoonAdapter(object : ComingSoonAdapter.OnClickListener{
+                        override fun onClickItem(data: ResultComingSoon) {
+                            val id = data.id
+                            val actionToDetailFragment = MainMenuFragmentDirections.actionNavigationHomeToMovieDetailFragment()
+                            actionToDetailFragment.movieId = id.toString().toInt()
+                            findNavController().navigate(actionToDetailFragment)
+                        }
+                    })
+                    adapter.submitData(resource.data)
+                    binding.rvComingsoon.adapter = adapter
+                    binding.progressBar.visibility = View.GONE
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "Error get Data : ${resource.message}", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
