@@ -1,8 +1,13 @@
 package com.felix.ticketin.di
 
+import com.chuckerteam.chucker.api.Chucker
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.felix.ticketin.data.service.ApiHelper
 import com.felix.ticketin.data.service.ApiService
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidApplication
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -23,6 +28,7 @@ val networkModule = module {
                 val request = original.newBuilder().url(url).build()
                 chain.proceed(request)
             }
+            .addInterceptor(ChuckerInterceptor(this.androidApplication()))
             .build()
     }
 

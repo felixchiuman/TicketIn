@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Hello, There"
+            android:text="Welcome, To \nTicketIn Premier"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"

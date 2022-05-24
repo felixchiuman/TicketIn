@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.ComingSoonFragment"
-    android:background="@color/navy_blue">
+    android:background="@color/red_wine">
 
     <TextView
         android:layout_width="match_parent"

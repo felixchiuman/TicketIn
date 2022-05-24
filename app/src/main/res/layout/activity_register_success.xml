@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.firebase.RegisterSuccessActivity"
-    android:background="@color/navy_blue">
+    android:background="@color/red_wine">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="128dp"

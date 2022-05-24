@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
-    android:background="@color/navy_blue">
+    android:background="@color/red_wine">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -17,8 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:itemIconTint="@color/navy_blue"
-        app:itemTextColor="@color/navy_blue"/>
+        app:itemIconTint="@color/red_wine"
+        app:itemTextColor="@color/red_wine"/>
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"

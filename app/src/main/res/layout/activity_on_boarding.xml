@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.onboarding.OnBoardingActivity"
-    android:background="@color/navy_blue">
+    android:background="@color/red_wine">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_onboarding"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/navy_blue"
+            android:backgroundTint="@color/red_wine"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -7,7 +7,7 @@
     tools:context=".ui.fragment.EnterSecurityFragment"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/navy_blue">
+    android:background="@color/red_wine">
 
     <TextView
         android:layout_width="wrap_content"
