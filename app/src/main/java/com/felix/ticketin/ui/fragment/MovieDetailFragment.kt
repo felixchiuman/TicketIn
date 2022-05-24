@@ -55,6 +55,7 @@ class MovieDetailFragment : Fragment() {
                     binding.tvDescDetail.text = resource.data?.overview
                     Picasso.get().load(IMAGE_BASE+resource.data?.backdropPath).fit().into(binding.ivBackdrop)
                     Picasso.get().load(IMAGE_BASE+resource.data?.posterPath).fit().into(binding.ivPoster)
+                    progressDialog.dismiss()
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), "Error get Data : ${resource.message}", Toast.LENGTH_SHORT).show()

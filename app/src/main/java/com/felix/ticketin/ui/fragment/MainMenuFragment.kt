@@ -1,6 +1,7 @@
 package com.felix.ticketin.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class MainMenuFragment : Fragment() {
             when (resource.status){
                 Status.LOADING -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    Log.d("hasil","loading")
                 }
                 Status.SUCCESS -> {
                     val adapter = PlayingNowAdapter(object : PlayingNowAdapter.OnClickListener{
@@ -52,12 +54,14 @@ class MainMenuFragment : Fragment() {
                         }
                     })
                     adapter.submitData(resource.data?.MoviePlaying)
-                    binding.rvComingsoon.adapter = adapter
+                    binding.rvPlaying.adapter = adapter
                     binding.progressBar.visibility = View.GONE
+                    Log.d("hasil","sukses")
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), "Error get Data : ${resource.message}", Toast.LENGTH_SHORT)
                         .show()
+                    Log.d("hasil","error")
                 }
             }
         }
