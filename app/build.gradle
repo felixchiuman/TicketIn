@@ -105,4 +105,11 @@ dependencies {
     debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
     releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
+    //Mockito framework
+    testImplementation "org.mockito:mockito-core:4.5.1"
+    //Mockito-kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    //Mockk framework
+    testImplementation "io.mockk:mockk:1.12.4"
+
 }
