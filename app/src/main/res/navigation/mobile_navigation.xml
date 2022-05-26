@@ -42,7 +42,7 @@
         tools:layout="@layout/activity_login" />
     <fragment
         android:id="@+id/setting"
-        android:name="com.felix.ticketin.ui.fragment.Setting"
+        android:name="com.felix.ticketin.ui.fragment.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" >
         <action

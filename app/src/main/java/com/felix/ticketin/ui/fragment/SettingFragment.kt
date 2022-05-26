@@ -15,7 +15,7 @@ import com.felix.ticketin.ui.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 
 
-class Setting : Fragment() {
+class SettingFragment : Fragment() {
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
     lateinit var firebaseAuth: FirebaseAuth
